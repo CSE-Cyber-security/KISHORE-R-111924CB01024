@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2768c5" />
+  <meta name="description" content="A clean, responsive to-do list to organize your day." />
+  <title>To-Do List | Plan • Do • Achieve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="hero-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 4.5h6a2 2 0 0 1 2 2V8h1.5A1.5 1.5 0 0 1 20 9.5v10A1.5 1.5 0 0 1 18.5 21h-13A1.5 1.5 0 0 1 4 19.5v-10A1.5 1.5 0 0 1 5.5 8H7V6.5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 4.5V3.8A1.8 1.8 0 0 1 10.8 2h2.4A1.8 1.8 0 0 1 15 3.8v.7M8 13l2.3 2.3L16.5 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <h1>To-Do List</h1>
+        <p>Plan <span>•</span> Do <span>•</span> Achieve</p>
+      </div>
+    </header>
+
+    <section class="content-card" aria-label="Task manager">
+      <form class="add-form" id="task-form">
+        <label class="sr-only" for="task-input">Enter a new task</label>
+        <input id="task-input" name="task" type="text" maxlength="160" placeholder="Enter a new task..." autocomplete="off" required />
+        <button class="add-button" type="submit"><span class="plus" aria-hidden="true">+</span><span>Add Task</span></button>
+      </form>
+      <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button class="filter active" type="button" data-filter="all" aria-pressed="true">All <span id="all-count">0</span></button>
+          <button class="filter" type="button" data-filter="pending" aria-pressed="false">Pending <span id="pending-count">0</span></button>
+          <button class="filter" type="button" data-filter="completed" aria-pressed="false">Completed <span id="completed-count">0</span></button>
+        </div>
+        <button class="clear-button" id="clear-completed" type="button" hidden>Clear completed</button>
+      </div>
+
+      <ul class="task-list" id="task-list" aria-label="Tasks"></ul>
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon" aria-hidden="true">✓</div>
+        <h2 id="empty-title">Your day, organized.</h2>
+        <p id="empty-description">Add a task above to get started.</p>
+      </div>
+      <footer class="card-footer">
+        <span id="footer-summary">Small steps make big goals.</span>
+        <span class="save-status"><span class="status-dot"></span> Saved on this device</span>
+      </footer>
+    </section>
+    <p class="app-note">Your tasks stay in this browser using local storage.</p>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>
